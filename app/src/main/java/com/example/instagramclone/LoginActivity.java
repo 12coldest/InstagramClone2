@@ -2,6 +2,7 @@ package com.example.instagramclone;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -64,6 +65,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             "Email, Username, Password is required",
                             Toast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
                 } else {
+                    
                     ParseUser.logInInBackground(edtLoginEmail.getText().toString(),
                             edtLoginPassword.getText().toString(), new LogInCallback() {
                                 @Override
@@ -74,6 +76,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                                 user.getUsername() + " is logged in",
                                                 FancyToast.LENGTH_LONG, FancyToast.SUCCESS,
                                                 true).show();
+                                        transitionToSocialMediaActivity();
                                     }
                                 }
                             });
@@ -93,5 +96,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         } catch(Exception e) {
             e.printStackTrace();
         }
+
+    }
+    private void transitionToSocialMediaActivity() {
+
+        Intent intent = new Intent(LoginActivity.this, SocialMediaActivity.class);
+        startActivity(intent);
     }
 }
