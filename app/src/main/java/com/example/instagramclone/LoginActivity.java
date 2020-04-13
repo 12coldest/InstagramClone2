@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             "Email, Username, Password is required",
                             Toast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
                 } else {
-                    
+
                     ParseUser.logInInBackground(edtLoginEmail.getText().toString(),
                             edtLoginPassword.getText().toString(), new LogInCallback() {
                                 @Override
@@ -83,8 +83,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
 
             break;
-            case R.id.btnSignUp:
-
+            case R.id.btnSignUpLoginActivity:
+                Intent intent = new Intent (LoginActivity.this, SignUp.class);
+                startActivity(intent);
             break;
     }
     }
@@ -102,5 +103,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         Intent intent = new Intent(LoginActivity.this, SocialMediaActivity.class);
         startActivity(intent);
+        finish();
     }
 }
